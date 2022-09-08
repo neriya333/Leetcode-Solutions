@@ -1,0 +1,18 @@
+class Solution {
+public:
+    // faster then 100%. what a champ. 77% memory =) But how can it be any better?
+    int rob(vector<int>& nums) {
+        int n = nums.size(), temp;
+        if (n==1) return nums[0];
+        int a = nums[0],b = max(nums[0],nums[1]);
+        int retval = b;
+        
+        for (int i=2;i<n;i++){
+            temp = max(a+nums[i],b);
+            if(temp>retval) retval = temp;
+            a = b;
+            b = temp;
+        }
+        return retval;
+    }
+};
